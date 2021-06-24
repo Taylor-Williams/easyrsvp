@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2021_06_24_191050) do
   create_table "reservations", force: :cascade do |t|
     t.integer "venue_id"
     t.datetime "date"
-    t.string "time_of_day"
     t.string "res_name"
     t.string "phone_number"
     t.integer "res_size"
@@ -26,11 +25,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_191050) do
   create_table "venues", force: :cascade do |t|
     t.string "name"
     t.integer "occupancy"
-    t.string "phone_number"
     t.string "location"
-    t.boolean "breakfast"
-    t.boolean "lunch"
-    t.boolean "dinner"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
