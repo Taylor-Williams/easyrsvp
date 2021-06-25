@@ -26,8 +26,8 @@ class Api::V1::VenuesController < ApplicationController
 
     private
 
-    def reservation_params
-        params.require(:venue).permit(:name, :occupany, :location)
+    def venue_params
+        params.require(:venue).permit(:name, :occupancy, :location)
     end
 
 end

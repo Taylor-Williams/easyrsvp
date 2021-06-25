@@ -1,4 +1,4 @@
 class VenueSerializer < ActiveModel::Serializer
-  attributes :id, :name, :occupancy
-  has_many: reservations
+  attributes :id, :name, :occupancy, :location
+  has_many :reservations
 end
