@@ -1,7 +1,6 @@
 class Venue < ApplicationRecord
     has_many :reservations
     validates :name, :occupancy, :location, :date, presence: true
-    validates :reservations_count, numericality: {less_than_or_equal_to: :occupancy}
     validates :date, date: { after_or_equal_to: Proc.new { Date.today },
         message: 'Venue date cannot be before today\'s date' }, on: :create
 
@@ -10,6 +9,10 @@ class Venue < ApplicationRecord
     end
 
     def days_left
-        (date - Date.today).to_i 
+        (DateTime.parse(date.to_date.to_s) - Date.today).to_i 
+    end
+
+    def display_date()
+        date.strftime("%B %-d %Y at %I:%M %P")
     end
 end

@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_191050) do
   create_table "venues", force: :cascade do |t|
     t.string "name"
     t.integer "occupancy"
+    t.integer "reservations_count"
     t.string "location"
     t.string "contact"
     t.datetime "date"

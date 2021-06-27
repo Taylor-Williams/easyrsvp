@@ -6,7 +6,9 @@ class Api::V1::VenuesController < ApplicationController
     end
 
     def create
-        # binding.pry
+        if venue_params[:date]
+            venue_params[:date] = DateTime.parse(venue_params[:date].to_time.to_s)
+        end
         @venue = Venue.new(venue_params)
         if @venue.save
             render json: @venue
@@ -28,7 +30,7 @@ class Api::V1::VenuesController < ApplicationController
     private
 
     def venue_params
-        params.require(:venue).permit(:name, :occupancy, :location, :date)
+        params.require(:venue).permit(:name, :occupancy, :location, :date, :contact, :reservations_count)
     end
 
 end
