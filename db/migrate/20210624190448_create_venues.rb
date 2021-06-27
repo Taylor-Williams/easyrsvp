@@ -4,6 +4,8 @@ class CreateVenues < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :occupancy
       t.string :location
+      t.string :contact
+      t.datetime :date
 
       t.timestamps
     end
