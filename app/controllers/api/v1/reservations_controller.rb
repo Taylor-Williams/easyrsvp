@@ -10,7 +10,6 @@ class Api::V1::ReservationsController < ApplicationController
     def create
         @reservation = @venue.reservations.new(reservation_params)
         #TODO: build out logic to only allow certain # of reservations for time period
-        binding.pry
         if @reservation.save
             render json: @venue
         else
@@ -18,14 +17,13 @@ class Api::V1::ReservationsController < ApplicationController
         end
     end
 
-    def show
-        @reservation = Reservation.find(params[:id])
-        render json: @reservation
-    end
-
     def destroy
         @reservation = Reservation.find(params[:id])
-        @reservation.destroy
+        if @reservation.destroy
+            render json: @venue
+        else
+            render json: {error: 'error destroying reservation'}
+        end
     end
 
     private
