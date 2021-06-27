@@ -11,7 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         #TODO: build out logic to only allow certain # of reservations for time period
         if @reservation.save
-            render json: @reservation
+            render json: @venue
         else
             render json: {error: "error creating reservation"}
         end
