@@ -8,8 +8,9 @@ class Api::V1::ReservationsController < ApplicationController
     end
 
     def create
-        @reservation = Reservation.new(reservation_params)
+        @reservation = @venue.reservations.new(reservation_params)
         #TODO: build out logic to only allow certain # of reservations for time period
+        binding.pry
         if @reservation.save
             render json: @venue
         else
