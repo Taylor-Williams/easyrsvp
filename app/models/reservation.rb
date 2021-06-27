@@ -1,5 +1,4 @@
 class Reservation < ApplicationRecord
-    belongs_to :venue
+    belongs_to :venue, counter_cache: true
     validates :res_name, presence: true
-    # validates_inclusion_of :time_of_day, :in => %w(breakfast lunch dinner)
 end

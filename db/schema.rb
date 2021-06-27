@@ -14,10 +14,8 @@ ActiveRecord::Schema.define(version: 2021_06_24_191050) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "venue_id"
-    t.datetime "date"
     t.string "res_name"
     t.string "phone_number"
-    t.integer "res_size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,6 +24,8 @@ ActiveRecord::Schema.define(version: 2021_06_24_191050) do
     t.string "name"
     t.integer "occupancy"
     t.string "location"
+    t.string "contact"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
