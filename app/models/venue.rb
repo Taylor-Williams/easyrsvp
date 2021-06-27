@@ -12,7 +12,8 @@ class Venue < ApplicationRecord
         (DateTime.parse(date.to_date.to_s) - Date.today).to_i 
     end
 
-    def display_date()
-        date.strftime("%B %-d %Y at %I:%M %P")
+    def display_date #only goes to pst for now
+        pstdate = ActiveSupport::TimeZone['Pacific Time (US & Canada)'].parse(date.to_time.to_s)
+        pstdate.strftime("%B %-d %Y at %I:%M %P")
     end
 end

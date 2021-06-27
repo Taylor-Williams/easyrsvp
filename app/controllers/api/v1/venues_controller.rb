@@ -6,8 +6,8 @@ class Api::V1::VenuesController < ApplicationController
     end
 
     def create
-        self.parse_date #try to add date in a rails DateTime-friendly format
         @venue = Venue.new(venue_params)
+        binding.pry
         if @venue.save
             render json: @venue
         else
@@ -29,12 +29,6 @@ class Api::V1::VenuesController < ApplicationController
 
     def venue_params
         params.require(:venue).permit(:name, :occupancy, :location, :date, :contact, :reservations_count)
-    end
-
-    def parse_date
-        if venue_params[:date] 
-            venue_params[:date] = DateTime.parse(venue_params[:date].to_time.to_s)
-        end
     end
 
 end
