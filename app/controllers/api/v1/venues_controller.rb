@@ -22,7 +22,11 @@ class Api::V1::VenuesController < ApplicationController
 
     def destroy
         @venue = Venue.find(params[:id])
-        @venue.destroy
+        if @venue.destroy
+            render json: @venue
+        else 
+            render json: {error: "could not destroy venue"}
+        end
     end
 
     private
